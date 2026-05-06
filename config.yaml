@@ -1,0 +1,30 @@
+# 风控建模 Agent MVP 配置
+
+project:
+  default_name: "risk_modeling_project"
+  artifacts_dir: "artifacts"
+  data_dir: "data"
+
+llm:
+  api_base: "https://api.openai.com/v1"
+  model: "gpt-4o"
+  temperature: 0.0
+  max_tokens: 4096
+
+modeling:
+  problem_type: "binary"
+  eval_metric: "roc_auc"
+  time_limit: 600
+  presets: "medium_quality"
+
+data_quality:
+  high_missing_threshold: 0.3
+  outlier_method: "IQR"
+  winsorize_lower: 0.01
+  winsorize_upper: 0.99
+
+transaction_features:
+  windows: [7, 14, 30, 60, 90, 180]
+  large_txn_multiplier: 3.0
+  night_start_hour: 22
+  night_end_hour: 6

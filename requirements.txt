@@ -1,0 +1,12 @@
+langgraph==0.4.1
+langchain-core==0.3.51
+langchain-openai==0.3.12
+autogluon.tabular==1.2.0
+scikit-learn==1.6.1
+pandas==2.2.3
+numpy==1.26.4
+streamlit==1.45.0
+pydantic==2.11.1
+pyyaml==6.0.2
+pytest==8.3.5
+openpyxl==3.1.5

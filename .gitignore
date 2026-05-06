@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project artifacts and data
+artifacts/
+data/
+!artifacts/.gitkeep
+!data/.gitkeep
+
+# Environment variables
+.env
+.env.local
+
+# MLflow
+mlruns/
+
+# AutoGluon models (large files)
+AutogluonModels/
+
+# Jupyter
+.ipynb_checkpoints/
