@@ -243,7 +243,7 @@ def node_time_leakage_check(state: dict) -> dict:
 
     result = detect_time_leakage_candidates(
         df=df,
-        base_time_col=base_time_col,
+        observation_time_col=base_time_col,
         protected_columns=protected,
     )
 
@@ -261,7 +261,11 @@ def node_risk_guard(state: dict) -> dict:
     import agents.risk_guard_agent as agent
 
     result = agent.run(state)
-    drop_columns = result.get("drop_recommendations", [])
+    drop_recommendations = result.get("drop_recommendations", [])
+    drop_columns = [
+        r["column"] if isinstance(r, dict) else r
+        for r in drop_recommendations
+    ]
     warnings = state.get("warnings", []) + result.get("warnings", [])
     return {"drop_columns": drop_columns, "warnings": warnings}
 

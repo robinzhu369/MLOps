@@ -117,7 +117,12 @@ def node_risk_guard(state: dict) -> dict:
     import agents.risk_guard_agent as agent
 
     result = agent.run(state)
-    drop_columns = result.get("drop_recommendations", [])
+    # Extract column names from drop_recommendations (list of dicts)
+    drop_recommendations = result.get("drop_recommendations", [])
+    drop_columns = [
+        r["column"] if isinstance(r, dict) else r
+        for r in drop_recommendations
+    ]
     warnings = state.get("warnings", []) + result.get("warnings", [])
     return {
         "drop_columns": drop_columns,
